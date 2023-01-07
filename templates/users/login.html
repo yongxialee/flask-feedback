@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% block title %}{% endblock%}
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h1 class="card-title"><b>Log In</b></h1>
+      <h6 class="card-subtitle mb-2 text-muted"></h6>
+      <p class="card-text">
+        <form method="POST" >
+            {{ form.hidden_tag() }}
+        {% for field in form 
+         if field.widget.input_type !='hidden '%}
+        
+         <p> 
+            {{field.label}}
+            {{field(class_="form-control")}}
+        
+            {% for error in field.errors %}
+            {{error }}
+            {% endfor %}
+         </p>
+         {% endfor %}
+         <div class="d-grid gap-2 d-md-block">
+         <button class="btn btn-success" type = "submit" >Log In</button>
+         </div>
+        </form></p>
+    </div>
+  </div>
+{% endblock%}
